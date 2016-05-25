@@ -101,7 +101,7 @@ getType(new Woodpecker());
 
 //----------------------getType with "this"-------------------//
 
-function getType(object) {
+function getType() {
     if ("goAway" in this) {
         if (this.constructor == Dog) {
             return "Dog";
@@ -113,6 +113,6 @@ function getType(object) {
     }
 }
 
-getType(new Dog());
-getType(new Cat());
-getType(new Woodpecker());
+getType.call(new Dog());
+getType.call(new Cat());
+getType.call(new Woodpecker());
