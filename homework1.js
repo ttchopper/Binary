@@ -85,9 +85,9 @@ woodpecker.goAway = function() {
 
 function getType(object) {
     if ("goAway" in object) {
-        if (object.constructor == Dog) {
+        if (object.constructor == Dog || cat.isPrototypeOf(object)) {
             return "Dog";
-        } else if (object.constructor == Cat) {
+        } else if (object.constructor == Cat || cat.isPrototypeOf(object)) {
             return "Cat";
         } else {
             return "Woodpecker";
@@ -103,9 +103,9 @@ getType(new Woodpecker());
 
 function getType() {
     if ("goAway" in this) {
-        if (this.constructor == Dog) {
+        if (this.constructor == Dog || cat.isPrototypeOf(this)) {
             return "Dog";
-        } else if (this.constructor == Cat) {
+        } else if (this.constructor == Cat || cat.isPrototypeOf(this)) {
             return "Cat";
         } else {
             return "Woodpecker";
