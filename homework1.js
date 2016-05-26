@@ -85,7 +85,7 @@ woodpecker.goAway = function() {
 
 function getType(object) {
     if ("goAway" in object) {
-        if (object.constructor == Dog || cat.isPrototypeOf(object)) {
+        if (object.constructor == Dog || dog.isPrototypeOf(object)) {
             return "Dog";
         } else if (object.constructor == Cat || cat.isPrototypeOf(object)) {
             return "Cat";
