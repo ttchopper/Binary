@@ -95,15 +95,19 @@ function getType(object) {
     }
 }
 
+
 getType(new Dog());
 getType(new Cat());
 getType(new Woodpecker());
+getType(Object.create(cat));
+getType(Object.create(dog));
+getType(Object.create(woodpecker));
 
 //----------------------getType with "this"-------------------//
 
 function getType() {
     if ("goAway" in this) {
-        if (this.constructor == Dog || cat.isPrototypeOf(this)) {
+        if (this.constructor == Dog || dog.isPrototypeOf(this)) {
             return "Dog";
         } else if (this.constructor == Cat || cat.isPrototypeOf(this)) {
             return "Cat";
@@ -116,3 +120,6 @@ function getType() {
 getType.call(new Dog());
 getType.call(new Cat());
 getType.call(new Woodpecker());
+getType.call(Object.create(cat));
+getType.call(Object.create(dog));
+getType.call(Object.create(woodpecker));
