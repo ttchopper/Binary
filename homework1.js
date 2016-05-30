@@ -81,13 +81,13 @@ woodpecker.goAway = function() {
 
 
 
-//----------------------getType with object-------------------//
+//----------------------getType with object created using constructors -------------------//
 
 function getType(object) {
     if ("goAway" in object) {
-        if (object.constructor == Dog || dog.isPrototypeOf(object)) {
+        if (object.constructor == Dog) {
             return "Dog";
-        } else if (object.constructor == Cat || cat.isPrototypeOf(object)) {
+        } else if (object.constructor == Cat) {
             return "Cat";
         } else {
             return "Woodpecker";
@@ -99,17 +99,35 @@ function getType(object) {
 getType(new Dog());
 getType(new Cat());
 getType(new Woodpecker());
+
+
+
+//----------------------getType with object created using Object.create()-------------------//
+
+function getType(object) {
+    if ("goAway" in object) {
+        if (dog.isPrototypeOf(object)) {
+            return "Dog";
+        } else if (cat.isPrototypeOf(object)) {
+            return "Cat";
+        } else {
+            return "Woodpecker";
+        }
+    }
+}
+
 getType(Object.create(cat));
 getType(Object.create(dog));
 getType(Object.create(woodpecker));
 
-//----------------------getType with "this"-------------------//
+
+//----------------------getType with "this" created using constructors-------------------//
 
 function getType() {
     if ("goAway" in this) {
-        if (this.constructor == Dog || dog.isPrototypeOf(this)) {
+        if (this.constructor == Dog) {
             return "Dog";
-        } else if (this.constructor == Cat || cat.isPrototypeOf(this)) {
+        } else if (this.constructor == Cat) {
             return "Cat";
         } else {
             return "Woodpecker";
@@ -120,6 +138,22 @@ function getType() {
 getType.call(new Dog());
 getType.call(new Cat());
 getType.call(new Woodpecker());
+
+
+//----------------------getType with "this" created using Object.create()-------------------//
+
+function getType() {
+    if ("goAway" in this) {
+        if (dog.isPrototypeOf(this)) {
+            return "Dog";
+        } else if (cat.isPrototypeOf(this)) {
+            return "Cat";
+        } else {
+            return "Woodpecker";
+        }
+    }
+}
+
 getType.call(Object.create(cat));
 getType.call(Object.create(dog));
 getType.call(Object.create(woodpecker));
